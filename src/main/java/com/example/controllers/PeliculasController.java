@@ -1,5 +1,56 @@
 package com.example.controllers;
 
-public class PeliculasController {
+import java.util.List;
+import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.entities.Peliculas;
+import com.example.services.PeliculasService;
+
+@RestController
+@RequestMapping("/peliculas")
+public class PeliculasController {
+	@Autowired
+	PeliculasService peliculasService;
+
+	@GetMapping
+	public List<Peliculas> getCustomers() {
+		Peliculas.info("Request a http://localhost:PORT/peliculas(GET)");
+		return peliculasService.findAllMovies();
+	}
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
+	public Optional<Peliculas> getCustomers(@PathVariable Long id) {
+		Peliculas.info("Request a http://localhost:PORT/peliculas/id(GET)");
+		return peliculasService.findMovieById(id);
+	}
+
+	@PutMapping
+	public Peliculas addCustomer(@RequestBody Peliculas pelicula) {
+		Peliculas.info("Request a http://localhost:PORT/peliculas/add(PUT)");
+		return peliculasService.addMovie(pelicula);
+	}
+
+	@DeleteMapping("/delete/{id}")
+	public void deleteCustomer(@PathVariable Long id) {
+		Peliculas.info("Request a http://localhost:PORT/peliculas/delete/id(DELETE)");
+
+		peliculasService.deleteMovie(id);
+	}
+
+	@PatchMapping("/update")
+	public Peliculas updateCustomer(@RequestBody Peliculas pelicula) {
+		Peliculas.info("Request a http://localhost:PORT/peliculas/update(PATCH)");
+		return peliculasService.updateMovie(pelicula);
+	}
 }
