@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Entity
-@Table(name = "PELICULAS")
+@Table(name = "PELICULA")
 @Data
 @Slf4j
 @AllArgsConstructor
@@ -20,7 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 public class Peliculas {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID")
+	//@Column(name = "ID")
 	private Long id_pelicula;
 
 	private String titulo;
