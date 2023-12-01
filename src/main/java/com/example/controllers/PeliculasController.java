@@ -24,32 +24,32 @@ public class PeliculasController {
 	PeliculasService peliculasService;
 
 	@GetMapping
-	public List<Peliculas> getCustomers() {
+	public List<Peliculas> getPeliculas() {
 		Peliculas.info("Request a http://localhost:PORT/peliculas(GET)");
 		return peliculasService.findAllMovies();
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
-	public Optional<Peliculas> getCustomers(@PathVariable Long id) {
+	public Optional<Peliculas> getPeliculas(@PathVariable Long id) {
 		Peliculas.info("Request a http://localhost:PORT/peliculas/id(GET)");
 		return peliculasService.findMovieById(id);
 	}
 
 	@PutMapping
-	public Peliculas addCustomer(@RequestBody Peliculas pelicula) {
+	public Peliculas addPelicula(@RequestBody Peliculas pelicula) {
 		Peliculas.info("Request a http://localhost:PORT/peliculas/add(PUT)");
 		return peliculasService.addMovie(pelicula);
 	}
 
 	@DeleteMapping("/delete/{id}")
-	public void deleteCustomer(@PathVariable Long id) {
+	public void deletePelicula(@PathVariable Long id) {
 		Peliculas.info("Request a http://localhost:PORT/peliculas/delete/id(DELETE)");
 
 		peliculasService.deleteMovie(id);
 	}
 
 	@PatchMapping("/update")
-	public Peliculas updateCustomer(@RequestBody Peliculas pelicula) {
+	public Peliculas updatePelicula(@RequestBody Peliculas pelicula) {
 		Peliculas.info("Request a http://localhost:PORT/peliculas/update(PATCH)");
 		return peliculasService.updateMovie(pelicula);
 	}

@@ -19,8 +19,8 @@ public class PeliculasService {
 	}
 	
 	public Optional<Peliculas> findMovieById(Long id){
-		Optional<Peliculas> customer=peliculasRepository.findById(id);
-		return customer;
+		Optional<Peliculas> pelicula=peliculasRepository.findById(id);
+		return pelicula;
 	}
 	
 	public Peliculas addMovie(Peliculas pelicula) {
