@@ -31,7 +31,7 @@ public class TiketsController {
 		return tiketService.findAllTikets();
 	}
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
+	@GetMapping(value = "/{id}")
 	public Optional<Tiket> getTikets(@PathVariable Integer id) {
 		Tiket.info("Request a http://localhost:PORT/tikets/id(GET)");
 		return tiketService.findTiketById(id);

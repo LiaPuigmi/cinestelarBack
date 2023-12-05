@@ -30,26 +30,26 @@ public class CinesController {
 	}
 
 	@GetMapping(value = "/{id}")
-	public Optional<Cine> getCustomers(@PathVariable int id) {
+	public Optional<Cine> getCinemas(@PathVariable int id) {
 		Cine.info("Request a http://localhost:PORT/cine/id(GET)");
 		return cineService.findCineById(id);
 	}
 
 	@PutMapping
-	public Cine addCustomer(@RequestBody Cine cine) {
+	public Cine addCinema(@RequestBody Cine cine) {
 		Cine.info("Request a http://localhost:PORT/cine/add(PUT)");
 		return cineService.addCine(cine);
 	}
 
 	@DeleteMapping("/delete/{id}")
-	public void deleteCustomer(@PathVariable int id) {
+	public void deleteCinema(@PathVariable int id) {
 		Cine.info("Request a http://localhost:PORT/cine/delete/id(DELETE)");
 
 		cineService.deleteCine(id);
 	}
 
 	@PatchMapping("/update")
-	public Cine updateCustomer(@RequestBody Cine cine) {
+	public Cine updateCinema(@RequestBody Cine cine) {
 		Cine.info("Request a http://localhost:PORT/cine/add(PUT)");
 		return cineService.updateCine(cine);
 	}

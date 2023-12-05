@@ -20,8 +20,8 @@ import lombok.extern.slf4j.Slf4j;
 public class Cine {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idCine")
-	private Integer idCine;
+	//@Column(name = "id_Cine")
+	private Integer id_cine;
 
 	private String ubicacion;
 

@@ -31,7 +31,7 @@ public class PeliculasController {
 		return peliculasService.findAllMovies();
 	}
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
+	@GetMapping(value = "/{id}")
 	public Optional<Peliculas> getPeliculas(@PathVariable Integer id) {
 		Peliculas.info("Request a http://localhost:PORT/peliculas/id(GET)");
 		return peliculasService.findMovieById(id);

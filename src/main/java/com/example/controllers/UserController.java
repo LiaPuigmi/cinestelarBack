@@ -27,30 +27,30 @@ public class UserController {
 	UserService userService;
 	
 	@GetMapping
-	public List<User> getCustomer(){
+	public List<User> getUsuarios(){
 		User.info("Request a http://localhost:PORT/user(GET)");
 		return userService.findAllUsers();
 	}
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
-	public Optional<User> getCustomers(@PathVariable String id) {
+	@GetMapping(value = "/{id}")
+	public Optional<User> getUsuarios(@PathVariable String id) {
 		User.info("Request a http://localhost:PORT/user/id(GET)");
 		return userService.findUserById(id);
 	}
 	@PutMapping
-	public User addCustomer(@RequestBody User user) {
+	public User addUsuario(@RequestBody User user) {
 		User.info("Request a http://localhost:PORT/user/add(PUT)");
 		return userService.addUser(user);
 	}
 
 	@DeleteMapping("/delete/{id}")
-	public void deleteCustomer(@PathVariable String id) {
+	public void deleteUsuario(@PathVariable String id) {
 		User.info("Request a http://localhost:PORT/user/delete/id(DELETE)");
 
 		userService.deleteUser(id);
 	}
 
 	@PatchMapping("/update")
-	public User updateCustomer(@RequestBody User user) {
+	public User updateUsuario(@RequestBody User user) {
 		User.info("Request a http://localhost:PORT/user/update(PATCH)");
 		return userService.updateUser(user);
 	}
