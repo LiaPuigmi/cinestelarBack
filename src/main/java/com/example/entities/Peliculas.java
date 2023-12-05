@@ -27,6 +27,7 @@ public class Peliculas {
 	private String pais;
 	private String year;
 	private String imagen;
+	private String imagen_horizontal;
 	
 	public static void info(String message) {
 		log.info(message);

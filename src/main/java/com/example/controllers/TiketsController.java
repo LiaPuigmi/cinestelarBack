@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -19,6 +20,7 @@ import com.example.services.TiketService;
 
 @RestController
 @RequestMapping("/tikets")
+@CrossOrigin(origins="*")
 public class TiketsController {
 	@Autowired
 	TiketService tiketService;
@@ -30,7 +32,7 @@ public class TiketsController {
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
-	public Optional<Tiket> getTikets(@PathVariable Long id) {
+	public Optional<Tiket> getTikets(@PathVariable Integer id) {
 		Tiket.info("Request a http://localhost:PORT/tikets/id(GET)");
 		return tiketService.findTiketById(id);
 	}
@@ -42,7 +44,7 @@ public class TiketsController {
 	}
 
 	@DeleteMapping("/delete/{id}")
-	public void deleteTiket(@PathVariable Long id) {
+	public void deleteTiket(@PathVariable Integer id) {
 		Tiket.info("Request a http://localhost:PORT/tikets/delete/id(DELETE)");
 
 		tiketService.deleteTiket(id);

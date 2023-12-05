@@ -5,4 +5,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.entities.Tiket;
 
 
-public interface TiketRepository extends JpaRepository<Tiket,Long>{}
+public interface TiketRepository extends JpaRepository<Tiket,Integer>{}

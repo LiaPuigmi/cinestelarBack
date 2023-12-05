@@ -24,15 +24,15 @@ public class Tiket {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	//@Column(name = "ID")
-	private Long tiket_id;
-	private String Cliente_correo_cliente;
-	private Integer Butaca_id_columna;
-	private Integer Butaca_id_fila;
-	private Date Horario_id_dia;
-	private String Horario_id_hora;
-	private Integer Horario_Sala_idSala;
-	private Integer Horario_Sala_Cine_idCine;
-	private Integer Horario_Pelicula_id_pelicula;
+	private Integer tiket_id;
+	private String cliente_correo_cliente;
+	private Integer butaca_id_fila;
+	private Integer butaca_id_columna;
+	private Date horario_id_dia;
+	private String horario_id_hora;
+	private Integer horario_sala_id_sala;
+	private Integer horario_sala_cine_id_cine;
+	private Integer horario_pelicula_id_pelicula;
 	
 	public static void info(String message) {
 		log.info(message);

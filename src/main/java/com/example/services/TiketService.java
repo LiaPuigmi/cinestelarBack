@@ -18,7 +18,7 @@ public class TiketService {
 		return tiketRepository.findAll();
 	}
 	
-	public Optional<Tiket> findTiketById(Long id){
+	public Optional<Tiket> findTiketById(Integer id){
 		Optional<Tiket> tiket=tiketRepository.findById(id);
 		return tiket;
 	}
@@ -27,7 +27,7 @@ public class TiketService {
         return tiketRepository.save(tiket);
     }
 
-    public void deleteTiket(Long id) {
+    public void deleteTiket(Integer id) {
     	tiketRepository.deleteById(id);
     }
 
