@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.entities.Cine;
-import com.example.entities.User;
 import com.example.services.CineService;
 
 @RestController
@@ -25,7 +24,7 @@ public class CinesController {
 
 	@GetMapping
 	public List<Cine> getCinemas() {
-		User.info("Request a http://localhost:PORT/cine(GET)");
+		Cine.info("Request a http://localhost:PORT/cine(GET)");
 		return cineService.findAllCine();
 	}
 
