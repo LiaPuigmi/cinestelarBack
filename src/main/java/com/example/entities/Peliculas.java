@@ -28,6 +28,7 @@ public class Peliculas {
 	private String year;
 	private String imagen;
 	private String imagen_horizontal;
+	private Byte ods;
 	
 
 	public static void info(String message) {
