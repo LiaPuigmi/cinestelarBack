@@ -1,6 +1,5 @@
 package com.example.entities;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,7 +20,7 @@ public class Peliculas {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	//@Column(name = "ID")
-	private Long id_pelicula;
+	private Integer id_pelicula;
 
 	private String titulo;
 	private String sinopsis;

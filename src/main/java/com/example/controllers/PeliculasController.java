@@ -30,7 +30,7 @@ public class PeliculasController {
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
-	public Optional<Peliculas> getPeliculas(@PathVariable Long id) {
+	public Optional<Peliculas> getPeliculas(@PathVariable Integer id) {
 		Peliculas.info("Request a http://localhost:PORT/peliculas/id(GET)");
 		return peliculasService.findMovieById(id);
 	}
@@ -42,7 +42,7 @@ public class PeliculasController {
 	}
 
 	@DeleteMapping("/delete/{id}")
-	public void deletePelicula(@PathVariable Long id) {
+	public void deletePelicula(@PathVariable Integer id) {
 		Peliculas.info("Request a http://localhost:PORT/peliculas/delete/id(DELETE)");
 
 		peliculasService.deleteMovie(id);

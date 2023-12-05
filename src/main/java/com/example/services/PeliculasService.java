@@ -18,7 +18,7 @@ public class PeliculasService {
 		return peliculasRepository.findAll();
 	}
 	
-	public Optional<Peliculas> findMovieById(Long id){
+	public Optional<Peliculas> findMovieById(Integer id){
 		Optional<Peliculas> pelicula=peliculasRepository.findById(id);
 		return pelicula;
 	}
@@ -27,7 +27,7 @@ public class PeliculasService {
         return peliculasRepository.save(pelicula);
     }
 
-    public void deleteMovie(Long id) {
+    public void deleteMovie(Integer id) {
     	peliculasRepository.deleteById(id);
     }
 
