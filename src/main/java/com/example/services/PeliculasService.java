@@ -18,16 +18,16 @@ public class PeliculasService {
 		return peliculasRepository.findAll();
 	}
 	
-	public Optional<Peliculas> findMovieById(Long id){
-		Optional<Peliculas> customer=peliculasRepository.findById(id);
-		return customer;
+	public Optional<Peliculas> findMovieById(Integer id){
+		Optional<Peliculas> pelicula=peliculasRepository.findById(id);
+		return pelicula;
 	}
 	
 	public Peliculas addMovie(Peliculas pelicula) {
         return peliculasRepository.save(pelicula);
     }
 
-    public void deleteMovie(Long id) {
+    public void deleteMovie(Integer id) {
     	peliculasRepository.deleteById(id);
     }
 
