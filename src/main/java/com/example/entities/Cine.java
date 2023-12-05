@@ -12,23 +12,20 @@ import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Entity
-@Table(name = "PELICULA")
+@Table(name = "CINE")
 @Data
 @Slf4j
 @AllArgsConstructor
 @NoArgsConstructor
-public class Peliculas {
+public class Cine {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id_pelicula;
+	@Column(name = "idCine")
+	private Integer idCine;
 
-	private String titulo;
-	private String sinopsis;
-	private String pais;
-	private String year;
-	private String imagen;
-	private String imagen_horizontal;
-	
+	private String ubicacion;
+
+	// getters and setters
 
 	public static void info(String message) {
 		log.info(message);
