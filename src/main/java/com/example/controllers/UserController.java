@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.DTOs.LoginDTO;
 import com.example.entities.AddUserResult;
 import com.example.entities.User;
 import com.example.services.UserService;
@@ -33,7 +34,7 @@ public class UserController {
 	}
 
 	@PostMapping(value = "/login")
-	public AddUserResult getUsuarios(@RequestParam(required = true) String id, @RequestParam(required = true) String password) {
+	public LoginDTO getUsuarios(@RequestParam(required = true) String id, @RequestParam(required = true) String password) {
 		User.info("Request a http://localhost:PORT/user/id(GET)");
 		
 		return userService.findUserById(id,password);
@@ -55,7 +56,7 @@ public class UserController {
 	@PatchMapping("/update")
 	public User updateUsuario(@RequestBody User user) {
 		User.info("Request a http://localhost:PORT/user/update(PATCH)");
-		return userService.updateUser(user);
+		return userService.updatePassword(user);
 	}
 
 }
