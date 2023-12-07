@@ -12,32 +12,35 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.entities.Peliculas;
+import com.example.entities.AddUserResult;
 import com.example.entities.User;
 import com.example.services.UserService;
 
 @RestController
 @RequestMapping("/usuarios")
-@CrossOrigin(origins="*")
+@CrossOrigin(origins = "*")
 public class UserController {
 	@Autowired
 	UserService userService;
-	
+
 	@GetMapping
-	public List<User> getUsuarios(){
+	public List<User> getUsuarios() {
 		User.info("Request a http://localhost:PORT/user(GET)");
 		return userService.findAllUsers();
 	}
-	@GetMapping(value = "/{id}")
-	public Optional<User> getUsuarios(@PathVariable String id) {
+
+	@GetMapping(value = "/")
+	public AddUserResult getUsuarios(@RequestParam(required = true) String id, @RequestParam(required = true) String password) {
 		User.info("Request a http://localhost:PORT/user/id(GET)");
-		return userService.findUserById(id);
+		
+		return userService.findUserById(id,password);
 	}
+
 	@PutMapping
-	public User addUsuario(@RequestBody User user) {
+	public AddUserResult addUsuario(@RequestBody User user) {
 		User.info("Request a http://localhost:PORT/user/add(PUT)");
 		return userService.addUser(user);
 	}

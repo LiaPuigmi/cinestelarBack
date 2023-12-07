@@ -1,8 +1,7 @@
 package com.example.entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -18,8 +17,8 @@ import lombok.extern.slf4j.Slf4j;
 @NoArgsConstructor
 public class User {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private String correo_cliente;
+	@Column(name = "correo_cliente", nullable = false)
+    private String correo_cliente;
 	private String nick_cliente;
 	private String contrasenya_cliente;
 	private String edad_cliente;
