@@ -21,7 +21,7 @@ public class User {
     private String correo_cliente;
 	private String nick_cliente;
 	private String contrasenya_cliente;
-	private String edad_cliente;
+	private Integer edad_cliente;
 	private String avatar_url;
 
 	
