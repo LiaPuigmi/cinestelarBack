@@ -22,9 +22,9 @@ public class Cine {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	//@Column(name = "id_Cine")
 	private Integer id_cine;
-
+	private String nombre_cine;
 	private String ubicacion;
-
+	private String imagen;
 	// getters and setters
 
 	public static void info(String message) {

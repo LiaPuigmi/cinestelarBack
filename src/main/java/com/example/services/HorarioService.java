@@ -31,7 +31,9 @@ public class HorarioService {
 		    String currentDate = format.format(new Date());
 		    for (Horario horarioPelicula : horarioList) {
 		    	String fechaProyeccion = format.format(horarioPelicula.getId_dia());
+		    	Horario.info(horarioPelicula.toString());
 		        if(fechaProyeccion.compareTo(currentDate) >= 0) {
+		        	
 		            peliculasEnEstreno.add(horarioPelicula);
 		        }
 		    }
@@ -88,7 +90,7 @@ public class HorarioService {
         return new AddUserResult(true, "Usuario agregado exitosamente.");
     
 }
-	public void deleteHorario(Date id) {
+	public void deleteHorario(Integer id) {
 		horarioRepository.deleteById(id);
 	}
 	public Horario updateHorario(Horario horario) {

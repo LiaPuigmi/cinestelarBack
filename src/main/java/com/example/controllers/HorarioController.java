@@ -55,7 +55,7 @@ public class HorarioController {
 	}
 
 	@DeleteMapping("/delete/{id}")
-	public void deleteHorario(@PathVariable Date id) {
+	public void deleteHorario(@PathVariable Integer id) {
 		Horario.info("Request a http://localhost:PORT/user/delete/id(DELETE)");
 
 		horarioService.deleteHorario(id);

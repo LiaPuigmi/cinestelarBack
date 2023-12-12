@@ -28,11 +28,7 @@ public class Tiket {
 	private String cliente_correo_cliente;
 	private Integer butaca_id_fila;
 	private Integer butaca_id_columna;
-	private Date horario_id_dia;
-	private String horario_id_hora;
-	private Integer horario_sala_id_sala;
-	private Integer horario_sala_cine_id_cine;
-	private Integer horario_pelicula_id_pelicula;
+	private Integer id_horario;
 	
 	public static void info(String message) {
 		log.info(message);
