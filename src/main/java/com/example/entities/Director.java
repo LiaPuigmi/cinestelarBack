@@ -20,8 +20,8 @@ public class Director {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id_director;
-	private String nombre_director;
-	private String apellido_director;
+	private String nombreDirector;
+	private String apellidoDirector;
 
 	// getters and setters
 

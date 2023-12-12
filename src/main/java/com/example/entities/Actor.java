@@ -20,8 +20,8 @@ public class Actor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id_actor;
-	private String nombre_actor;
-	private String apellido_actor;
+	private String nombreActor;
+	private String apellidoActor;
 
 	// getters and setters
 

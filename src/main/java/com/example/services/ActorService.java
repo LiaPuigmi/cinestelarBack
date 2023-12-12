@@ -22,6 +22,16 @@ public class ActorService {
 		Optional<Actor> customer = actorRepository.findById(id);
 		return customer;
 	}
+	public Optional<Actor> findActorByName(String name) {
+	    String lowercaseName = name.toLowerCase();  // Convertir el nombre proporcionado a minúsculas
+
+	    return actorRepository.findAll()
+	        .stream()
+	        .filter(actor -> 
+	            (actor.getNombreActor() + actor.getApellidoActor()).toLowerCase().equals(lowercaseName)
+	        )
+	        .findFirst();
+	}
 
 	public Actor addActor(Actor actor) {
 		return actorRepository.save(actor);

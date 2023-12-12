@@ -35,6 +35,12 @@ public class GenerosController {
 		Generos.info("Request a http://localhost:PORT/generos/id(GET)");
 		return generosService.findGeneroById(id);
 	}
+	@GetMapping(value = "/name/{nombre}")
+	public Optional<Generos> getGenerosByName(@PathVariable String nombre) {
+	    Generos.info("Request a http://localhost:PORT/generos/name(GET)");
+	    return generosService.findGeneroByName(nombre);
+	}
+
 
 	@PutMapping
 	public Generos addGenero(@RequestBody Generos genero) {

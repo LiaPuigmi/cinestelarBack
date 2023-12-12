@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.entities.Director;
+import com.example.entities.Generos;
 import com.example.services.DirectorService;
 
 @RestController
@@ -34,6 +35,11 @@ public class DirectorController {
 	public Optional<Director> getCinemas(@PathVariable Integer id) {
 		Director.info("Request a http://localhost:PORT/director/id(GET)");
 		return directorService.findDirectorById(id);
+	}
+	@GetMapping(value = "/name/{nombre}")
+	public Optional<Director> getDirectorByName(@PathVariable String nombre) {
+	    Generos.info("Request a http://localhost:PORT/director/name(GET)");
+	    return directorService.findDirectorByName(nombre);
 	}
 
 	@PutMapping

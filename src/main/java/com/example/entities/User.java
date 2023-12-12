@@ -27,6 +27,8 @@ public class User {
 
 	 @Transient // Indica que este campo no debe persistirse en la base de datos
 	    private String nuevaContrasenya;
+	 	
+	 
 	public static void info(String message) {
 		log.info(message);
 	}

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.entities.Actor;
+import com.example.entities.Generos;
 import com.example.services.ActorService;
 
 @RestController
@@ -35,7 +36,11 @@ public class ActorController {
 		Actor.info("Request a http://localhost:PORT/actor/id(GET)");
 		return actorService.findActorById(id);
 	}
-
+	@GetMapping(value = "/name/{nombre}")
+	public Optional<Actor> getDirectorByName(@PathVariable String nombre) {
+	    Generos.info("Request a http://localhost:PORT/actor/name(GET)");
+	    return actorService.findActorByName(nombre);
+	}
 	@PutMapping
 	public Actor addActor(@RequestBody Actor actor) {
 		Actor.info("Request a http://localhost:PORT/actor/add(PUT)");

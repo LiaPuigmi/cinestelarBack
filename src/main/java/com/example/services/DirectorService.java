@@ -23,6 +23,16 @@ public class DirectorService {
 		return customer;
 	}
 
+	public Optional<Director> findDirectorByName(String name) {
+	    String lowercaseName = name.toLowerCase();  // Convertir el nombre proporcionado a minúsculas
+
+	    return directorRepository.findAll()
+	        .stream()
+	        .filter(director -> 
+	            (director.getNombreDirector() + director.getApellidoDirector()).toLowerCase().equals(lowercaseName)
+	        )
+	        .findFirst();
+	}
 	public Director addDirector(Director director) {
 		return directorRepository.save(director);
 	}

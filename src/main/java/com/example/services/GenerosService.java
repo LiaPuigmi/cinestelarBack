@@ -22,7 +22,14 @@ public class GenerosService {
 		Optional<Generos> generos=generosRepository.findById(id);
 		return generos;
 	}
-	
+	public Optional<Generos> findGeneroByName(String name) {
+	    String lowercaseName = name.toLowerCase();  // Convertir el nombre proporcionado a minúsculas
+
+	    return generosRepository.findAll()
+	        .stream()
+	        .filter(genero -> genero.getNameGenero().toLowerCase().equals(lowercaseName))
+	        .findFirst();
+	}
 	public Generos addGenero(Generos genero) {
         return generosRepository.save(genero);
     }

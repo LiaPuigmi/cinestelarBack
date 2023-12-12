@@ -24,7 +24,7 @@ public class Generos {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idGenero;
-	private String name_genero;
+	private String nameGenero;
 
 	@ManyToMany(mappedBy = "generos")
     private Set<Peliculas> peliculas = new HashSet<>();
