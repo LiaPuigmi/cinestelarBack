@@ -54,6 +54,20 @@ public class HorarioService {
 		
 	}
 	
+	public List<Horario> findHorarioCinesById(List<Horario>listaEstrenos, Integer idCine, Integer idPelicula){
+	    List<Horario> horariosPelicula = new ArrayList<Horario>();
+	    for (Horario horario : listaEstrenos) {
+	    	if(horario.getSala_cine_id_cine().equals(idCine) && horario.getPelicula_id_pelicula().equals(idPelicula)) {
+	    			horariosPelicula.add(horario);
+	    		
+	    	}
+	    	if(idCine==0 && horario.getPelicula_id_pelicula().equals(idPelicula)) {
+	    			horariosPelicula.add(horario);
+	    	}
+	    }
+	    return horariosPelicula;		
+	}
+	
 	public Set<Peliculas> findCinesByIdNotRepeat(List<Horario>listaEstrenos, Integer idCine){
 	    Set<Peliculas> peliculasUnicas = new HashSet<>();
 	    for (Horario horario : listaEstrenos) {

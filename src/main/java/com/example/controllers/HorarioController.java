@@ -47,6 +47,15 @@ public class HorarioController {
 		
 		return horarioService.findCinesByIdNotRepeat(getHorarios(), id);
 	}
+	
+	@GetMapping(value = "/estrenos/{idcine}/{idpeli}")
+	public List<Horario> getHorariosPeliculasCine(@PathVariable int idcine,@PathVariable int idpeli) {
+		Horario.info("Request a http://localhost:PORT/user/id(GET)");
+		
+		return horarioService.findHorarioCinesById(getHorarios(), idcine, idpeli);
+	}
+	
+	
 
 	@PutMapping
 	public AddUserResult addHorario(@RequestBody Horario horario) {
