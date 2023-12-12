@@ -69,7 +69,44 @@ public class UserService {
 		usersRepository.deleteById(id);
 	}
 
-	public User updatePassword(User user) {
-		return usersRepository.save(user);
+	public AddUserResult updatePassword(User user) {
+	      List<User> usersList = usersRepository.findAll();
+	        Optional<User> userOptional = usersList.stream()
+	                .filter(us -> user.getCorreo_cliente().equals(us.getCorreo_cliente()))
+	                .findFirst();
+
+	        if (userOptional.isPresent()) {
+	            User existingUser = userOptional.get();
+
+	            if (!user.getContrasenya_cliente().equals(existingUser.getContrasenya_cliente())) {
+	                return new AddUserResult(false, "La contraseña actual es incorrecta.");
+	            }
+
+	            // Cambiar la contraseña
+	            existingUser.setContrasenya_cliente(user.getNuevaContrasenya());
+	            usersRepository.save(existingUser);
+
+	            return new AddUserResult(true, "Contraseña cambiada exitosamente.");
+	        } else {
+	            return new AddUserResult(false, "Usuario no encontrado.");
+	        }
+	    }
+	public boolean updateProfileImage(String correoCliente, String newAvatarUrl) {
+	    List<User> usersList = usersRepository.findAll();
+	    Optional<User> userOptional = usersList.stream()
+	            .filter(user -> user.getCorreo_cliente().equals(correoCliente))
+	            .findFirst();
+
+	    if (userOptional.isPresent()) {
+	        User existingUser = userOptional.get();
+
+	        // Actualizar la URL de la imagen de perfil
+	        existingUser.setAvatar_url(newAvatarUrl);
+	        usersRepository.save(existingUser);
+
+	        return true;
+	    } else {
+	        return false; // Usuario no encontrado
+	    }
 	}
 }

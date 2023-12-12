@@ -4,6 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,7 +25,8 @@ public class User {
 	private Integer edad_cliente;
 	private String avatar_url;
 
-	
+	 @Transient // Indica que este campo no debe persistirse en la base de datos
+	    private String nuevaContrasenya;
 	public static void info(String message) {
 		log.info(message);
 	}
