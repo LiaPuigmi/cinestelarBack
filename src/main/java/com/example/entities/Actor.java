@@ -19,7 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 public class Actor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id_actor;
+	private Integer idActor;
 	private String nombreActor;
 	private String apellidoActor;
 
