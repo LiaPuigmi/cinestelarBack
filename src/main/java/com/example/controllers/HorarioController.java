@@ -34,19 +34,28 @@ public class HorarioController {
 		return horarioService.findAllHorarios();
 	}
 
-	@GetMapping(value = "/unic")
+	@GetMapping(value = "/estrenos")
 	public Set<Peliculas> getPeliculasUnicas() {
 		Horario.info("Request a http://localhost:PORT/user/id(GET)");
 		
 		return horarioService.findPeliculasByIdNotRepeat(getHorarios());
 	} 
 	
-	@GetMapping(value = "/unic/{id}")
+	@GetMapping(value = "/estrenos/{id}")
 	public Set<Peliculas> getPeliculasCine(@PathVariable int id) {
 		Horario.info("Request a http://localhost:PORT/user/id(GET)");
 		
 		return horarioService.findCinesByIdNotRepeat(getHorarios(), id);
 	}
+	
+	@GetMapping(value = "/estrenos/{idcine}/{idpeli}")
+	public List<Horario> getHorariosPeliculasCine(@PathVariable int idcine,@PathVariable int idpeli) {
+		Horario.info("Request a http://localhost:PORT/user/id(GET)");
+		
+		return horarioService.findHorarioCinesById(getHorarios(), idcine, idpeli);
+	}
+	
+	
 
 	@PutMapping
 	public AddUserResult addHorario(@RequestBody Horario horario) {
