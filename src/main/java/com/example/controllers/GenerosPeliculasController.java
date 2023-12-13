@@ -21,13 +21,13 @@ public class GenerosPeliculasController {
 	public List<GenerosPeliculasDTO> getPeliculasByGenre() {
 		return generosPeliculasRepository.findAll();
 	}
-//	@GetMapping(value = "/{idGenero}")
-//	public List<GenerosPeliculasDTO> getPeliculasByIdGenre(@PathVariable Integer idGenero) {
-//	    return generosPeliculasRepository.findByIdGenero(idGenero);
-//	}
+	@GetMapping(value = "/id/{idGenero}")
+	public List<GenerosPeliculasDTO> getPeliculasByIdGenre(@PathVariable Integer idGenero) {
+	    return generosPeliculasRepository.findByIdGenero(idGenero);
+	}
 
-	@GetMapping(value = "/{nameGenero}")
+	@GetMapping(value = "/name/{nameGenero}")
 	public List<GenerosPeliculasDTO> getPeliculasByGenre(@PathVariable String nameGenero) {
-		return generosPeliculasRepository.findByNameGenero(nameGenero);
+	    return generosPeliculasRepository.findByNameGenero(nameGenero);
 	}
 }
