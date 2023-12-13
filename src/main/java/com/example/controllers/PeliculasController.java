@@ -12,11 +12,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.entities.Peliculas;
-import com.example.repositories.PeliculasRepository;
 import com.example.services.PeliculasService;
 
 @RestController
@@ -33,10 +31,7 @@ public class PeliculasController {
 		return peliculasService.findAllMovies();
 	}
 	
-	@GetMapping("/genero/{generoId}")
-    public List<Peliculas> getPeliculasByGenero(@PathVariable Integer generoId) {
-        return peliculasService.getPeliculasByGenero(generoId);
-    }
+
 
 	@GetMapping(value = "/{id}")
 	public Optional<Peliculas> getPeliculas(@PathVariable Integer id) {

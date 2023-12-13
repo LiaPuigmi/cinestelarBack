@@ -15,15 +15,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.entities.Director;
-import com.example.entities.Generos;
 import com.example.services.DirectorService;
+import com.example.services.PeliculasService;
 
 @RestController
 @RequestMapping("/directores")
-@CrossOrigin(origins="*")
+@CrossOrigin(origins = "*")
 public class DirectorController {
 	@Autowired
 	DirectorService directorService;
+	@Autowired
+	PeliculasService peliculasService;
 
 	@GetMapping
 	public List<Director> getDirector() {
@@ -36,11 +38,12 @@ public class DirectorController {
 		Director.info("Request a http://localhost:PORT/director/id(GET)");
 		return directorService.findDirectorById(id);
 	}
-	@GetMapping(value = "/name/{nombre}")
-	public Optional<Director> getDirectorByName(@PathVariable String nombre) {
-	    Generos.info("Request a http://localhost:PORT/director/name(GET)");
-	    return directorService.findDirectorByName(nombre);
-	}
+//	@GetMapping(value = "/name/{nombre}")
+//	public Optional<Peliculas> getDirectorByName(@PathVariable String nombre) {
+//	    Generos.info("Request a http://localhost:PORT/director/name(GET)");
+////	    return peliculasService.findDirectorByName(nombre);
+//	    return null;
+//	}
 
 	@PutMapping
 	public Director addDirector(@RequestBody Director director) {

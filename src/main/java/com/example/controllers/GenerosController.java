@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,11 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.entities.Generos;
+import com.example.entities.Peliculas;
 import com.example.services.GenerosService;
 
 @RestController
 @RequestMapping("/generos")
-@CrossOrigin(origins="*")
+@CrossOrigin(origins = "*")
 public class GenerosController {
 	@Autowired
 	GenerosService generosService;
@@ -35,11 +38,7 @@ public class GenerosController {
 		Generos.info("Request a http://localhost:PORT/generos/id(GET)");
 		return generosService.findGeneroById(id);
 	}
-	@GetMapping(value = "/name/{nombre}")
-	public Optional<Generos> getGenerosByName(@PathVariable String nombre) {
-	    Generos.info("Request a http://localhost:PORT/generos/name(GET)");
-	    return generosService.findGeneroByName(nombre);
-	}
+
 
 
 	@PutMapping

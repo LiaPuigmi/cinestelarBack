@@ -18,9 +18,7 @@ public class PeliculasService {
 		return peliculasRepository.findAll();
 	}
 	
-	public List<Peliculas> getPeliculasByGenero(Integer generoId) {
-        return peliculasRepository.findByGenerosIdGenero(generoId);
-    }
+
 	
 	public Optional<Peliculas> findMovieById(Integer id){
 		Optional<Peliculas> pelicula=peliculasRepository.findById(id);

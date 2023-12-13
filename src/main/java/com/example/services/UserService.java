@@ -61,7 +61,8 @@ public class UserService {
 		if (checkIfExistsNickCliente.isPresent()) {
 			return new AddUserResult(false, "El nick ya está en uso.");
 		}
-
+		
+		  usersRepository.save(user);
 		return new AddUserResult(true, "Usuario agregado exitosamente.");
 	}
 
