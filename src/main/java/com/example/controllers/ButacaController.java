@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.entities.AddUserResult;
 import com.example.entities.Butaca;
+import com.example.entities.Generos;
 import com.example.services.ButacaService;
 
 @RestController
@@ -28,6 +29,12 @@ public class ButacaController {
 	@GetMapping
 	public List<Butaca> getAllButacas(){
 		return butacaService.findAllButacasTotal();
+	}
+	
+	@GetMapping(value = "/{butacaId}")
+	public Optional<Butaca> findButacaById(@PathVariable Integer butacaId) {
+		Generos.info("Request a http://localhost:PORT/generos/id(GET)");
+		return butacaService.findButacaById(butacaId);
 	}
 	
 	@GetMapping (value = "/{idcine}/{idsala}")

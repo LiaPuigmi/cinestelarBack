@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.entities.AddUserResult;
 import com.example.entities.Butaca;
+import com.example.entities.Generos;
 import com.example.repositories.ButacaRepository;
 
 
@@ -21,6 +22,10 @@ public class ButacaService {
 		return butacaRepository.findAll();
 	}
 	
+	public Optional<Butaca> findButacaById(Integer butacaId) {
+		Optional<Butaca> butaca = butacaRepository.findById(butacaId);
+		return butaca;
+	}
 	public List<Butaca> findAllButacas(int idcine, int idsala) {
 		List<Butaca> butacas = butacaRepository.findAll();
 		List<Butaca> butacasCineSala=new ArrayList<Butaca>();
