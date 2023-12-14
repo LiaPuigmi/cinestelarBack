@@ -19,12 +19,13 @@ import lombok.extern.slf4j.Slf4j;
 public class User {
 	@Id
 	@Column(name = "correo_cliente", nullable = false)
-    private String correo_cliente;
-	private String nick_cliente;
-	private String contrasenya_cliente;
-	private Integer edad_cliente;
-	private String avatar_url;
-
+    private String correoCliente;
+	private String nickCliente;
+	
+	private String contrasenyaCliente;
+	private Integer edadCliente;
+	private String avatarUrl;
+	
 	 @Transient // Indica que este campo no debe persistirse en la base de datos
 	    private String nuevaContrasenya;
 	 	

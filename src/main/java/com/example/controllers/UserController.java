@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.DTOs.LoginDTO;
+import com.example.DTOs.UserDTO;
 import com.example.entities.AddUserResult;
 import com.example.entities.User;
 import com.example.services.UserService;
@@ -41,7 +42,26 @@ public class UserController {
 		
 		return userService.findUserById(id,password);
 	}
+	@PostMapping(value = "/profile/{nick}")
+	public ResponseEntity<UserDTO> showUserProfile(@PathVariable String nick) {
+	    User user = userService.showUser(nick);
 
+	    if (user == null) {
+	        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	    }
+
+	    UserDTO userDTO = convertToUserDTO(user);
+	    return new ResponseEntity<>(userDTO, HttpStatus.OK);
+	}
+
+	private UserDTO convertToUserDTO(User user) {
+	    UserDTO userDTO = new UserDTO();
+	    userDTO.setCorreoCliente(user.getCorreoCliente());
+	    userDTO.setNickCliente(user.getNickCliente());
+	    userDTO.setEdadCliente(user.getEdadCliente());
+	    userDTO.setAvatarUrl(user.getAvatarUrl());
+	    return userDTO;
+	}
 	@PutMapping
 	public AddUserResult addUsuario(@RequestBody User user) {
 		User.info("Request a http://localhost:PORT/user/add(PUT)");
@@ -60,7 +80,7 @@ public class UserController {
 	    User.info("Request to http://localhost:PORT/user/update/password(PATCH)");
 
 	    // Validar que el usuario y las contraseñas no sean nulas
-	    if (user == null || user.getCorreo_cliente() == null || user.getContrasenya_cliente() == null || user.getNuevaContrasenya() == null) {
+	    if (user == null || user.getCorreoCliente() == null || user.getContrasenyaCliente() == null || user.getNuevaContrasenya() == null) {
 	        return new ResponseEntity<>("Datos de usuario incompletos", HttpStatus.BAD_REQUEST);
 	    }
 
@@ -77,12 +97,12 @@ public class UserController {
 	@PatchMapping("/update/avatar")
 	public ResponseEntity<String> updateUsuarioAvataar(@RequestBody User user) {
 	    User.info("Request to http://localhost:PORT/user/update/avatar(PATCH)");
-	    if (user == null || user.getCorreo_cliente() == null || user.getAvatar_url() == null) {
+	    if (user == null || user.getCorreoCliente() == null || user.getAvatarUrl() == null) {
 	        return new ResponseEntity<>("Datos de usuario incompletos", HttpStatus.BAD_REQUEST);
 	    }
 
 	    // Llamar al servicio para actualizar la imagen de perfil
-	    boolean success = userService.updateProfileImage(user.getCorreo_cliente(), user.getAvatar_url());
+	    boolean success = userService.updateProfileImage(user.getCorreoCliente(), user.getAvatarUrl());
 
 	    // Devolver el resultado como ResponseEntity
 	    if (success) {

@@ -26,14 +26,14 @@ public class UserService {
 		if (userOptional.isPresent()) {
 			User user = userOptional.get();
 
-			if (!user.getCorreo_cliente().equals(id)) {
+			if (!user.getCorreoCliente().equals(id)) {
 				loginDTO.setMsg("Usuario no encontrado.");
 				return loginDTO;
 			}
 
-			if (user.getContrasenya_cliente().equals(password)) {
+			if (user.getContrasenyaCliente().equals(password)) {
 				loginDTO.setMsg("Las credenciales son correctas, Inicio de sesión exitoso.");
-				loginDTO.setUsername(user.getNick_cliente());
+				loginDTO.setUsername(user.getNickCliente());
 				return loginDTO;
 			}
 			loginDTO.setMsg("Contraseña incorrecta.");
@@ -45,14 +45,25 @@ public class UserService {
 
 
 	}
+	public User showUser(String nick){
+	    Optional<User> userOptional = usersRepository.findByNickCliente(nick);
+
+        if (userOptional.isPresent()) {
+            return userOptional.get();
+        }
+        else {
+        	return null;
+        }
+            
+	}
 
 	public AddUserResult addUser(User user) {
 		List<User> usersList = usersRepository.findAll();
 		Optional<User> checkIfExistsCorreoCliente = usersList.stream()
-				.filter(userItem -> userItem.getCorreo_cliente().equals(user.getCorreo_cliente())).findFirst();
+				.filter(userItem -> userItem.getCorreoCliente().equals(user.getCorreoCliente())).findFirst();
 
 		Optional<User> checkIfExistsNickCliente = usersList.stream()
-				.filter(userItem -> userItem.getNick_cliente().equals(user.getNick_cliente())).findFirst();
+				.filter(userItem -> userItem.getNickCliente().equals(user.getNickCliente())).findFirst();
 
 		if (checkIfExistsCorreoCliente.isPresent()) {
 			return new AddUserResult(false, "El correo ya está registrado.");
@@ -73,18 +84,18 @@ public class UserService {
 	public AddUserResult updatePassword(User user) {
 	      List<User> usersList = usersRepository.findAll();
 	        Optional<User> userOptional = usersList.stream()
-	                .filter(us -> user.getCorreo_cliente().equals(us.getCorreo_cliente()))
+	                .filter(us -> user.getCorreoCliente().equals(us.getCorreoCliente()))
 	                .findFirst();
 
 	        if (userOptional.isPresent()) {
 	            User existingUser = userOptional.get();
 
-	            if (!user.getContrasenya_cliente().equals(existingUser.getContrasenya_cliente())) {
+	            if (!user.getContrasenyaCliente().equals(existingUser.getContrasenyaCliente())) {
 	                return new AddUserResult(false, "La contraseña actual es incorrecta.");
 	            }
 
 	            // Cambiar la contraseña
-	            existingUser.setContrasenya_cliente(user.getNuevaContrasenya());
+	            existingUser.setContrasenyaCliente(user.getNuevaContrasenya());
 	            usersRepository.save(existingUser);
 
 	            return new AddUserResult(true, "Contraseña cambiada exitosamente.");
@@ -95,14 +106,14 @@ public class UserService {
 	public boolean updateProfileImage(String correoCliente, String newAvatarUrl) {
 	    List<User> usersList = usersRepository.findAll();
 	    Optional<User> userOptional = usersList.stream()
-	            .filter(user -> user.getCorreo_cliente().equals(correoCliente))
+	            .filter(user -> user.getCorreoCliente().equals(correoCliente))
 	            .findFirst();
 
 	    if (userOptional.isPresent()) {
 	        User existingUser = userOptional.get();
 
 	        // Actualizar la URL de la imagen de perfil
-	        existingUser.setAvatar_url(newAvatarUrl);
+	        existingUser.setAvatarUrl(newAvatarUrl);
 	        usersRepository.save(existingUser);
 
 	        return true;
