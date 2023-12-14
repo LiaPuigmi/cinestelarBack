@@ -39,6 +39,20 @@ public class HorarioController {
 		return horarioService.findPeliculasByIdNotRepeat(getHorarios());
 	} 
 	
+	@GetMapping(value = "/estrenosods")
+	public Set<Peliculas> getPeliculasOdsUnicas() {
+		Horario.info("Request a http://localhost:PORT/user/id(GET)");
+		
+		return horarioService.findPeliculasOdsByIdNotRepeat(getHorarios());
+	} 
+	
+	@GetMapping(value = "/estrenosods/historic")
+	public Set<Peliculas> getPeliculasOdsOldUnicas() {
+		Horario.info("Request a http://localhost:PORT/user/id(GET)");
+		
+		return horarioService.findPeliculasOdsOldByIdNotRepeat(horarioService.findAllHorariosOld());
+	} 
+	
 	@GetMapping(value = "/estrenos/{id}")
 	public Set<Peliculas> getPeliculasCine(@PathVariable int id) {
 		Horario.info("Request a http://localhost:PORT/user/id(GET)");

@@ -40,12 +40,56 @@ public class HorarioService {
 		    return peliculasEnEstreno;
 	}
 	
+	public List<Horario> findAllHorariosOld(){
+		 List<Horario> horarioList = horarioRepository.findAll();
+		 List<Horario> peliculasEnEstreno = new ArrayList<Horario>();
+		 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		    String currentDate = format.format(new Date());
+		    for (Horario horarioPelicula : horarioList) {
+		    	String fechaProyeccion = format.format(horarioPelicula.getIdDia());
+		    	Horario.info(horarioPelicula.toString());
+		        if(fechaProyeccion.compareTo(currentDate) < 0) {
+		        	
+		            peliculasEnEstreno.add(horarioPelicula);
+		        }
+		    }
+		    return peliculasEnEstreno;
+	}
+	
+	public Set<Peliculas> findPeliculasOdsOldByIdNotRepeat(List<Horario>listaEstrenos){
+	    Set<Peliculas> peliculasUnicas = new HashSet<>();
+	    for (Horario horario : listaEstrenos) {
+	    	Integer idPelicula = horario.getPeliculaIdPelicula();
+	        Optional<Peliculas> optionalPelicula = peliculasRepository.findById(idPelicula);
+	        if(optionalPelicula.isPresent() && optionalPelicula.get().getOds().equals(1)) {
+	            Peliculas pelicula = optionalPelicula.get();
+	            peliculasUnicas.add(pelicula);
+	        }
+	    }
+	    return peliculasUnicas;		
+		
+	}
+	
 	public Set<Peliculas> findPeliculasByIdNotRepeat(List<Horario>listaEstrenos){
 	    Set<Peliculas> peliculasUnicas = new HashSet<>();
 	    for (Horario horario : listaEstrenos) {
 	    	Integer idPelicula = horario.getPeliculaIdPelicula();
 	        Optional<Peliculas> optionalPelicula = peliculasRepository.findById(idPelicula);
 	        if(optionalPelicula.isPresent()) {
+	            Peliculas pelicula = optionalPelicula.get();
+	            peliculasUnicas.add(pelicula);
+	        }
+	    }
+	    return peliculasUnicas;		
+		
+	}
+	
+	public Set<Peliculas> findPeliculasOdsByIdNotRepeat(List<Horario>listaEstrenos){
+	    Set<Peliculas> peliculasUnicas = new HashSet<>();
+	    for (Horario horario : listaEstrenos) {
+	    	Integer idPelicula = horario.getPeliculaIdPelicula();
+	        Optional<Peliculas> optionalPelicula = peliculasRepository.findById(idPelicula);
+	        if(optionalPelicula.isPresent() && optionalPelicula.get().getOds().equals(1)) {
 	            Peliculas pelicula = optionalPelicula.get();
 	            peliculasUnicas.add(pelicula);
 	        }
