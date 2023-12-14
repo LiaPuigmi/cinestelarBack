@@ -34,7 +34,7 @@ public class Peliculas {
 	private String year;
 	private String imagen;
 	private String imagen_horizontal;
-	private Byte ods;
+	private Integer ods;
 	
 	@ManyToMany
     @JoinTable(
