@@ -14,7 +14,7 @@ import com.example.repositories.ActorPeliculasRepository;
 
 @RequestMapping("byactor")
 @RestController
-@CrossOrigin(origins="*")
+@CrossOrigin(origins = "*")
 public class ActorPeliculasController {
 	@Autowired
 	private ActorPeliculasRepository actorPeliculasRepository;
@@ -23,14 +23,15 @@ public class ActorPeliculasController {
 	public List<ActorPeliculasDTO> getPeliculasByActor() {
 		return actorPeliculasRepository.findAll();
 	}
-	
+
 	@GetMapping(value = "/id/{idActor}")
 	public List<ActorPeliculasDTO> getPeliculasByIdActor(@PathVariable Integer idActor) {
-	    return actorPeliculasRepository.findByIdActor(idActor);
+		return actorPeliculasRepository.findByIdActor(idActor);
 	}
 
 	@GetMapping(value = "/name/{nombreActor}/{apellidoActor}")
-	public List<ActorPeliculasDTO> getPeliculasByActor(@PathVariable String nombreActor, @PathVariable String apellidoActor) {
-	    return actorPeliculasRepository.findByNombreActorAndApellidoActor(nombreActor, apellidoActor);
+	public List<ActorPeliculasDTO> getPeliculasByActor(@PathVariable String nombreActor,
+			@PathVariable String apellidoActor) {
+		return actorPeliculasRepository.findByNombreActorAndApellidoActor(nombreActor, apellidoActor);
 	}
 }

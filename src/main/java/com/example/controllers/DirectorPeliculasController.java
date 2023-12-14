@@ -14,7 +14,7 @@ import com.example.repositories.DirectorPeliculasRepository;
 
 @RequestMapping("bydirector")
 @RestController
-@CrossOrigin(origins="*")
+@CrossOrigin(origins = "*")
 
 public class DirectorPeliculasController {
 	@Autowired
@@ -24,14 +24,15 @@ public class DirectorPeliculasController {
 	public List<DirectorPeliculasDTO> getPeliculasByDirector() {
 		return directorPeliculasRepository.findAll();
 	}
-	
+
 	@GetMapping(value = "/id/{idDirector}")
 	public List<DirectorPeliculasDTO> getPeliculasByIdDirector(@PathVariable Integer idDirector) {
-	    return directorPeliculasRepository.findByIdDirector(idDirector);
+		return directorPeliculasRepository.findByIdDirector(idDirector);
 	}
 
 	@GetMapping(value = "/name/{nombreDirector}/{apellidoDirector}")
-	public List<DirectorPeliculasDTO> getPeliculasByDirector(@PathVariable String nombreDirector, @PathVariable String apellidoDirector) {
-	    return directorPeliculasRepository.findByNombreDirectorAndApellidoDirector(nombreDirector, apellidoDirector);
+	public List<DirectorPeliculasDTO> getPeliculasByDirector(@PathVariable String nombreDirector,
+			@PathVariable String apellidoDirector) {
+		return directorPeliculasRepository.findByNombreDirectorAndApellidoDirector(nombreDirector, apellidoDirector);
 	}
 }

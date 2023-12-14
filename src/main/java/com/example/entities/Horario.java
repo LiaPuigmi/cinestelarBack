@@ -25,15 +25,15 @@ public class Horario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	//@Column(name = "id_Cine")
 	
-	private Integer id_horario;
+	private Integer idHorario;
 	
 	@Temporal(TemporalType.DATE)
-	private Date id_dia;
+	private Date idDia;
 
-	private String id_hora;
-	private Integer sala_id_sala;
-	private Integer sala_cine_id_cine;
-	private Integer pelicula_id_pelicula;
+	private String idHora;
+	private Integer salaIdSala;
+	private Integer salaCineIdCine;
+	private Integer peliculaIdPelicula;
 
 	// getters and setters
 

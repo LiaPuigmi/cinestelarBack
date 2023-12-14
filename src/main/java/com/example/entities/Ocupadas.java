@@ -24,10 +24,10 @@ public class Ocupadas {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	//@Column(name = "id_Cine")
-	private Integer id_ocupadas;
+	private Integer idOcupadas;
 
 	private Integer idButaca;
-	private Integer id_horario;
+	private Integer idHorario;
 
 	private Integer ocupado;
 

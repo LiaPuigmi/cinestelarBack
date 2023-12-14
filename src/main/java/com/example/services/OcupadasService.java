@@ -28,7 +28,7 @@ public class OcupadasService {
 		List<Ocupadas> ocupadas = ocupadasRepository.findAll();
 		List<Ocupadas> butacasCineSala=new ArrayList<Ocupadas>();
 		for (Ocupadas ocupada : ocupadas) {
-			if(ocupada.getId_horario().equals(idhorario)) {
+			if(ocupada.getIdHorario().equals(idhorario)) {
 				butacasCineSala.add(ocupada);
 			}
 		}
@@ -71,13 +71,13 @@ public class OcupadasService {
 		Ocupadas ocupadasButacas = new Ocupadas();
 		if (ocupadasOptional.isPresent()) {
 			Ocupadas ocupadas = ocupadasOptional.get();
-			if (!ocupadas.getId_ocupadas().equals(id)) {
+			if (!ocupadas.getIdOcupadas().equals(id)) {
 				ocupadasButacas=ocupadas;
 				OcupadasButacasDTO.info("Butaca no encontrada.");
 				return new AddUserResult(false, "Butaca no encontrada.");
 			}
 
-			if (ocupadas.getId_ocupadas().equals(id)) {
+			if (ocupadas.getIdOcupadas().equals(id)) {
 				if(ocupadas.getOcupado().equals(0)) {
 					ocupadasButacas=ocupadas;
 					ocupadasButacas.setOcupado(1);

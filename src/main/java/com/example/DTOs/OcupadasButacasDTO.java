@@ -3,6 +3,7 @@ package com.example.DTOs;
 import java.io.Serializable;
 
 import com.example.entities.Butaca;
+import com.example.entities.Horario;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -29,18 +30,21 @@ public class OcupadasButacasDTO implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	// @Column(name = "id_Cine")
-	private Integer id_ocupadas;
+	private Integer idOcupadas;
 
 	@Column(insertable = false, updatable = false)
 	private Integer idButaca;
-	private Integer id_horario;
+	@Column(insertable = false, updatable = false)
+	private Integer idHorario;
 
 	private Integer ocupado;
 
 	@ManyToOne
 	@JoinColumn(name = "idButaca")
 	    private Butaca butaca;
-
+	@ManyToOne
+	@JoinColumn(name = "idHorario")
+	    private Horario horario;
 //	@ManyToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "idButaca")
 //    private Butaca butaca;

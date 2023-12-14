@@ -20,9 +20,9 @@ public class Tiket {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	//@Column(name = "ID")
-	private Integer tiket_id;
-	private String cliente_correo_cliente;
-	private Integer id_ocupadas;
+	private Integer tiketId;
+	private String clienteCorreoCliente;
+	private Integer idOcupadas;
 	
 	public static void info(String message) {
 		log.info(message);

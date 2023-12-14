@@ -25,7 +25,7 @@ public class OcupadasButacasService {
 		List<OcupadasButacasDTO> ocupadas = ocupadasButacasRepository.findAll();
 		List<OcupadasButacasDTO> butacasCineSala=new ArrayList<OcupadasButacasDTO>();
 		for (OcupadasButacasDTO ocupada : ocupadas) {
-			if(ocupada.getId_horario().equals(idhorario)) {
+			if(ocupada.getIdHorario().equals(idhorario)) {
 				butacasCineSala.add(ocupada);
 			}
 		}
