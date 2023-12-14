@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.DTOs.OcupadasButacasDTO;
 import com.example.entities.AddUserResult;
 import com.example.entities.Ocupadas;
 import com.example.services.OcupadasService;
@@ -36,11 +37,11 @@ public class OcupadasController {
 		return ocupadasService.findAllOcupadas(idhorario);
 	}
 
-	@GetMapping(value = "/{idhorario}/{idfila}/{idcolumna}")
-	public AddUserResult getOcupada(@PathVariable int idhorario, @PathVariable int idfila,@PathVariable int idcolumna) {
-		Ocupadas.info("Request a http://localhost:PORT/butacas/id(GET)");
-		return ocupadasService.findOcupadasById(getOcupadas(idhorario), idfila, idcolumna);
-	}
+//	@GetMapping(value = "/{idhorario}/{idfila}/{idcolumna}")
+//	public AddUserResult getOcupada(@PathVariable int idhorario, @PathVariable int idfila,@PathVariable int idcolumna) {
+//		Ocupadas.info("Request a http://localhost:PORT/butacas/id(GET)");
+//		return ocupadasService.findOcupadasById(getOcupadas(idhorario), idfila, idcolumna);
+//	}
 
 	@PutMapping
 	public Ocupadas addOcupadas(@RequestBody Ocupadas ocupadas) {
@@ -55,9 +56,9 @@ public class OcupadasController {
 		ocupadasService.deleteOcupada(id);
 	}
 
-	@PatchMapping("/update")
-	public Ocupadas updateOcupada(@RequestBody Ocupadas ocupadas) {
+	@PatchMapping("/update/{id}")
+	public AddUserResult updateOcupada(@PathVariable int id) {
 		Ocupadas.info("Request a http://localhost:PORT/butacas/add(PUT)");
-		return ocupadasService.updateOcupada(ocupadas);
+		return ocupadasService.findOcupadaById(id);
 	}
 }

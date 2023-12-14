@@ -2,12 +2,17 @@ package com.example.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.DTOs.LoginDTO;
+import com.example.DTOs.OcupadasButacasDTO;
 import com.example.entities.AddUserResult;
+import com.example.entities.Cine;
 import com.example.entities.Ocupadas;
+import com.example.entities.User;
 import com.example.repositories.OcupadasRepository;
 
 @Service
@@ -31,18 +36,9 @@ public class OcupadasService {
 		return butacasCineSala;
 	}
 
-	public AddUserResult findOcupadasById(List<Ocupadas> ocupadas, int idfila, int idcolumna) {
-		for (Ocupadas ocupada : ocupadas) {
-			//if(butaca.getId_fila().equals(idfila) && butaca.getId_columna().equals(idcolumna)) {
-				// if(butaca.getOcupado().equals(0)) {
-				//	butaca.setOcupado((byte) 1);
-				//	return new AddUserResult(true, "Butaca ocupada correctamente");
-				// }
-				//	return new AddUserResult(false, "Esta butaca ya esta ocupada, elegir otra");
-		//	}
-		}
-		return new AddUserResult(false, "No se encuentran butacas");
-		
+	public Optional<Ocupadas> findOcupadasById(int id) {
+		Optional<Ocupadas> ocupadas = ocupadasRepository.findById(id);
+		return ocupadas;
 	}
 
 	public Ocupadas addOcupada(Ocupadas ocupadas) {
@@ -53,7 +49,53 @@ public class OcupadasService {
 		ocupadasRepository.deleteById(id);
 	}
 
-	public Ocupadas updateOcupada(Ocupadas ocupadas) {
-		return ocupadasRepository.save(ocupadas);
+//	public Ocupadas updateOcupada(Integer id) {
+//		Optional<Ocupadas> ocu=findOcupadasById(id);
+//		Ocupadas ocuPresent;
+//		if(ocu.get().getOcupado().equals(0)) {
+//			ocu.get().setOcupado((byte) 1);
+//			if(ocu.isPresent()) {
+//				ocuPresent=ocu.get();
+//					ocupadasRepository.save(ocuPresent);
+//
+//			}
+//			
+//		}else {
+//			
+//		}
+//		
+//	}
+	
+	public AddUserResult findOcupadaById(int id) {
+		Optional<Ocupadas> ocupadasOptional = ocupadasRepository.findById(id);
+		Ocupadas ocupadasButacas = new Ocupadas();
+		if (ocupadasOptional.isPresent()) {
+			Ocupadas ocupadas = ocupadasOptional.get();
+			if (!ocupadas.getId_ocupadas().equals(id)) {
+				ocupadasButacas=ocupadas;
+				OcupadasButacasDTO.info("Butaca no encontrada.");
+				return new AddUserResult(false, "Butaca no encontrada.");
+			}
+
+			if (ocupadas.getId_ocupadas().equals(id)) {
+				if(ocupadas.getOcupado().equals(0)) {
+					ocupadasButacas=ocupadas;
+					ocupadasButacas.setOcupado(1);
+					ocupadasRepository.save(ocupadasButacas);
+					OcupadasButacasDTO.info("Las butaca ha sido ocupada exitosamente.");
+					return new AddUserResult(true, "Las butaca ha sido ocupada exitosamente.");
+				}else {
+					OcupadasButacasDTO.info("Esta butaca ya esta ocupada por otra persona.");
+					return new AddUserResult(false, "Esta butaca ya esta ocupada por otra persona.");
+				}
+				
+			}
+
+		} else {
+			OcupadasButacasDTO.info("Butaca inexistente.");
+			return new AddUserResult(false, "Butaca inexistente.");
+		}
+		return new AddUserResult(false, "Error fatal.");
 	}
+
 }

@@ -35,7 +35,7 @@ public class OcupadasButacasDTO implements Serializable {
 	private Integer idButaca;
 	private Integer id_horario;
 
-	private Byte ocupado;
+	private Integer ocupado;
 
 	@ManyToOne
 	@JoinColumn(name = "idButaca")

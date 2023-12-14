@@ -29,7 +29,7 @@ public class Ocupadas {
 	private Integer idButaca;
 	private Integer id_horario;
 
-	private Byte ocupado;
+	private Integer ocupado;
 
 	
 	// getters and setters
