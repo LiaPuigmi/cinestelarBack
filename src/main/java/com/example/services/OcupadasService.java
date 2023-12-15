@@ -9,9 +9,11 @@ import org.springframework.stereotype.Service;
 
 import com.example.DTOs.LoginDTO;
 import com.example.DTOs.OcupadasButacasDTO;
+import com.example.controllers.TiketsController;
 import com.example.entities.AddUserResult;
 import com.example.entities.Cine;
 import com.example.entities.Ocupadas;
+import com.example.entities.Tiket;
 import com.example.entities.User;
 import com.example.repositories.OcupadasRepository;
 
@@ -19,6 +21,9 @@ import com.example.repositories.OcupadasRepository;
 public class OcupadasService {
 	@Autowired
 	OcupadasRepository ocupadasRepository;
+	
+	@Autowired
+	TiketService tiketService;
 
 	public List<Ocupadas> findAllOcupadasTotal() {
 		return ocupadasRepository.findAll();
@@ -49,24 +54,8 @@ public class OcupadasService {
 		ocupadasRepository.deleteById(id);
 	}
 
-//	public Ocupadas updateOcupada(Integer id) {
-//		Optional<Ocupadas> ocu=findOcupadasById(id);
-//		Ocupadas ocuPresent;
-//		if(ocu.get().getOcupado().equals(0)) {
-//			ocu.get().setOcupado((byte) 1);
-//			if(ocu.isPresent()) {
-//				ocuPresent=ocu.get();
-//					ocupadasRepository.save(ocuPresent);
-//
-//			}
-//			
-//		}else {
-//			
-//		}
-//		
-//	}
 	
-	public AddUserResult findOcupadaById(int id) {
+	public AddUserResult findOcupadaById(int id, String usuario) {
 		Optional<Ocupadas> ocupadasOptional = ocupadasRepository.findById(id);
 		Ocupadas ocupadasButacas = new Ocupadas();
 		if (ocupadasOptional.isPresent()) {
@@ -82,6 +71,10 @@ public class OcupadasService {
 					ocupadasButacas=ocupadas;
 					ocupadasButacas.setOcupado(1);
 					ocupadasRepository.save(ocupadasButacas);
+					Tiket tiket=new Tiket();
+					tiket.setClienteCorreoCliente(usuario);
+					tiket.setIdOcupadas(id);
+					tiketService.addTiket(tiket);
 					OcupadasButacasDTO.info("Las butaca ha sido ocupada exitosamente.");
 					return new AddUserResult(true, "Las butaca ha sido ocupada exitosamente.");
 				}else {

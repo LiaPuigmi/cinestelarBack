@@ -37,11 +37,6 @@ public class OcupadasController {
 		return ocupadasService.findAllOcupadas(idhorario);
 	}
 
-//	@GetMapping(value = "/{idhorario}/{idfila}/{idcolumna}")
-//	public AddUserResult getOcupada(@PathVariable int idhorario, @PathVariable int idfila,@PathVariable int idcolumna) {
-//		Ocupadas.info("Request a http://localhost:PORT/butacas/id(GET)");
-//		return ocupadasService.findOcupadasById(getOcupadas(idhorario), idfila, idcolumna);
-//	}
 
 	@PutMapping
 	public Ocupadas addOcupadas(@RequestBody Ocupadas ocupadas) {
@@ -56,9 +51,9 @@ public class OcupadasController {
 		ocupadasService.deleteOcupada(id);
 	}
 
-	@PatchMapping("/update/{id}")
-	public AddUserResult updateOcupada(@PathVariable int id) {
+	@PatchMapping("/update/{id}/{usuario}")
+	public AddUserResult updateOcupada(@PathVariable int id, @PathVariable String usuario) {
 		Ocupadas.info("Request a http://localhost:PORT/butacas/add(PUT)");
-		return ocupadasService.findOcupadaById(id);
+		return ocupadasService.findOcupadaById(id, usuario);
 	}
 }

@@ -6,32 +6,43 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.DTOs.TicketDTO;
 import com.example.entities.Tiket;
+import com.example.repositories.TiketDTORepository;
 import com.example.repositories.TiketRepository;
 
 @Service
 public class TiketService {
 	@Autowired
+	TiketDTORepository tiketDTORepository;
+	
+	@Autowired
 	TiketRepository tiketRepository;
 	
-	public List<Tiket> findAllTikets(){
-		return tiketRepository.findAll();
+	public List<TicketDTO> findAllTikets(){
+		return tiketDTORepository.findAll();
 	}
 	
-	public Optional<Tiket> findTiketById(Integer id){
-		Optional<Tiket> tiket=tiketRepository.findById(id);
+	public Optional<TicketDTO> findTiketById(Integer id){
+		Optional<TicketDTO> tiket=tiketDTORepository.findById(id);
+		return tiket;
+	}
+	
+	
+	public Optional<TicketDTO> findTiketByIdOcupadas(Integer id){
+		Optional<TicketDTO> tiket=tiketDTORepository.findById(id);
 		return tiket;
 	}
 	
 	public Tiket addTiket(Tiket tiket) {
-        return tiketRepository.save(tiket);
+         return tiketRepository.save(tiket);
     }
 
     public void deleteTiket(Integer id) {
-    	tiketRepository.deleteById(id);
+    	tiketDTORepository.deleteById(id);
     }
 
-    public Tiket updateTiket(Tiket tiket) {
-        return tiketRepository.save(tiket);
+    public TicketDTO updateTiket(TicketDTO tiket) {
+        return tiketDTORepository.save(tiket);
     }
 }

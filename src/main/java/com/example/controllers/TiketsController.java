@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.DTOs.TicketDTO;
 import com.example.entities.Tiket;
 import com.example.services.TiketService;
 
@@ -26,33 +27,33 @@ public class TiketsController {
 	TiketService tiketService;
 
 	@GetMapping
-	public List<Tiket> getTikets() {
-		Tiket.info("Request a http://localhost:PORT/tikets(GET)");
+	public List<TicketDTO> getTikets() {
+		TicketDTO.info("Request a http://localhost:PORT/tikets(GET)");
 		return tiketService.findAllTikets();
 	}
 
 	@GetMapping(value = "/{id}")
-	public Optional<Tiket> getTikets(@PathVariable Integer id) {
-		Tiket.info("Request a http://localhost:PORT/tikets/id(GET)");
+	public Optional<TicketDTO> getTikets(@PathVariable Integer id) {
+		TicketDTO.info("Request a http://localhost:PORT/tikets/id(GET)");
 		return tiketService.findTiketById(id);
 	}
 
 	@PutMapping
 	public Tiket addTiket(@RequestBody Tiket tiket) {
-		Tiket.info("Request a http://localhost:PORT/tikets/add(PUT)");
+		TicketDTO.info("Request a http://localhost:PORT/tikets/add(PUT)");
 		return tiketService.addTiket(tiket);
 	}
 
 	@DeleteMapping("/delete/{id}")
 	public void deleteTiket(@PathVariable Integer id) {
-		Tiket.info("Request a http://localhost:PORT/tikets/delete/id(DELETE)");
+		TicketDTO.info("Request a http://localhost:PORT/tikets/delete/id(DELETE)");
 
 		tiketService.deleteTiket(id);
 	}
 
 	@PatchMapping("/update")
-	public Tiket updateTiket(@RequestBody Tiket tiket) {
-		Tiket.info("Request a http://localhost:PORT/tikets/update(PATCH)");
+	public TicketDTO updateTiket(@RequestBody TicketDTO tiket) {
+		TicketDTO.info("Request a http://localhost:PORT/tikets/update(PATCH)");
 		return tiketService.updateTiket(tiket);
 	}
 }

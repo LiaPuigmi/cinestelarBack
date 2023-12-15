@@ -1,5 +1,6 @@
 package com.example.DTOs;
 
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,10 +12,12 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Entity
 @Table(name = "TIKET")
 @Data
+@Slf4j
 @AllArgsConstructor
 @NoArgsConstructor
 public class TicketDTO {
@@ -29,4 +32,8 @@ public class TicketDTO {
 		@ManyToOne
 		@JoinColumn(name = "idOcupadas")
 		    private OcupadasButacasDTO ocupadaButaca;
+		
+		public static void info(String message) {
+			log.info(message);
+		}
 }

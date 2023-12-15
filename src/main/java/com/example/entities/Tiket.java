@@ -19,7 +19,6 @@ import lombok.extern.slf4j.Slf4j;
 public class Tiket {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@Column(name = "ID")
 	private Integer tiketId;
 	private String clienteCorreoCliente;
 	private Integer idOcupadas;
