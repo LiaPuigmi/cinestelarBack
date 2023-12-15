@@ -24,26 +24,19 @@ import com.example.services.PeliculasService;
 public class DirectorController {
 	@Autowired
 	DirectorService directorService;
-	@Autowired
-	PeliculasService peliculasService;
 
 	@GetMapping
-	public List<Director> getDirector() {
+	public List<Director> getDirectores() {
 		Director.info("Request a http://localhost:PORT/director(GET)");
 		return directorService.findAllDirector();
 	}
 
 	@GetMapping(value = "/{id}")
-	public Optional<Director> getCinemas(@PathVariable Integer id) {
+	public Optional<Director> getDirectores(@PathVariable Integer id) {
 		Director.info("Request a http://localhost:PORT/director/id(GET)");
 		return directorService.findDirectorById(id);
 	}
-//	@GetMapping(value = "/name/{nombre}")
-//	public Optional<Peliculas> getDirectorByName(@PathVariable String nombre) {
-//	    Generos.info("Request a http://localhost:PORT/director/name(GET)");
-////	    return peliculasService.findDirectorByName(nombre);
-//	    return null;
-//	}
+
 
 	@PutMapping
 	public Director addDirector(@RequestBody Director director) {

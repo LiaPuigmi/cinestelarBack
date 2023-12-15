@@ -19,18 +19,8 @@ public class ActorService {
 	}
 
 	public Optional<Actor> findActorById(Integer id) {
-		Optional<Actor> customer = actorRepository.findById(id);
-		return customer;
-	}
-	public Optional<Actor> findActorByName(String name) {
-	    String lowercaseName = name.toLowerCase();  // Convertir el nombre proporcionado a minúsculas
-
-	    return actorRepository.findAll()
-	        .stream()
-	        .filter(actor -> 
-	            (actor.getNombreActor() + actor.getApellidoActor()).toLowerCase().equals(lowercaseName)
-	        )
-	        .findFirst();
+		Optional<Actor> actor = actorRepository.findById(id);
+		return actor;
 	}
 
 	public Actor addActor(Actor actor) {

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.DTOs.PeliculasDetalleDTO;
 import com.example.entities.Peliculas;
 import com.example.services.PeliculasService;
 
@@ -31,6 +32,17 @@ public class PeliculasController {
 		return peliculasService.findAllMovies();
 	}
 	
+	@GetMapping (value = "/detalle")
+	public List<PeliculasDetalleDTO> getPeliculasDetalle() {
+		Peliculas.info("Request a http://localhost:PORT/peliculas(GET)");
+		return peliculasService.findDetallePeliculas();
+	}
+	
+	@GetMapping (value = "/detalle/{id}")
+	public Optional<PeliculasDetalleDTO> getPeliculasDetalleId(@PathVariable Integer id) {
+		Peliculas.info("Request a http://localhost:PORT/peliculas(GET)");
+		return peliculasService.findDetallePeliculasId(id);
+	}
 
 
 	@GetMapping(value = "/{id}")

@@ -14,8 +14,6 @@ import com.example.repositories.PeliculasRepository;
 public class GenerosService {
 	@Autowired
 	GenerosRepository generosRepository;
-	@Autowired
-	PeliculasRepository peliculasRepository;
 
 	public List<Generos> findAllGeneros() {
 		return generosRepository.findAll();

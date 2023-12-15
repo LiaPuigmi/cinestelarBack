@@ -1,13 +1,9 @@
 package com.example.entities;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,8 +22,6 @@ public class Generos {
 	private Integer idGenero;
 	private String nameGenero;
 
-	@ManyToMany(mappedBy = "generos")
-	private Set<Peliculas> peliculas = new HashSet<>();
 
 	public static void info(String message) {
 		log.info(message);

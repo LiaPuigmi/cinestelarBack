@@ -32,15 +32,11 @@ public class ActorController {
 	}
 
 	@GetMapping(value = "/{id}")
-	public Optional<Actor> getCinemas(@PathVariable Integer id) {
+	public Optional<Actor> getActores(@PathVariable Integer id) {
 		Actor.info("Request a http://localhost:PORT/actor/id(GET)");
 		return actorService.findActorById(id);
 	}
-	@GetMapping(value = "/name/{nombre}")
-	public Optional<Actor> getDirectorByName(@PathVariable String nombre) {
-	    Generos.info("Request a http://localhost:PORT/actor/name(GET)");
-	    return actorService.findActorByName(nombre);
-	}
+	
 	@PutMapping
 	public Actor addActor(@RequestBody Actor actor) {
 		Actor.info("Request a http://localhost:PORT/actor/add(PUT)");

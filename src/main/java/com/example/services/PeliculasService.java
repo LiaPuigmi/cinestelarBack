@@ -6,7 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.DTOs.PeliculasDetalleDTO;
 import com.example.entities.Peliculas;
+import com.example.repositories.PeliculasDetallesRepository;
 import com.example.repositories.PeliculasRepository;
 
 @Service
@@ -14,10 +16,20 @@ public class PeliculasService {
 	@Autowired
 	PeliculasRepository peliculasRepository;
 	
+	@Autowired
+	PeliculasDetallesRepository peliculasDetalleRepository;
+	
 	public List<Peliculas> findAllMovies(){
 		return peliculasRepository.findAll();
 	}
 	
+	public List<PeliculasDetalleDTO> findDetallePeliculas(){
+		return peliculasDetalleRepository.findAll();
+	}
+	
+	public  Optional<PeliculasDetalleDTO> findDetallePeliculasId(Integer id){
+		return peliculasDetalleRepository.findById(id);
+	}
 
 	
 	public Optional<Peliculas> findMovieById(Integer id){
