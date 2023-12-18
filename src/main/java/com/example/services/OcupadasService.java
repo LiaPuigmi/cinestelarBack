@@ -72,8 +72,7 @@ public class OcupadasService {
 					ocupadasButacas.setOcupado(1);
 					ocupadasRepository.save(ocupadasButacas);
 					Tiket tiket=new Tiket();
-					tiket.setClienteCorreoCliente(usuario);
-					tiket.setIdOcupadas(id);
+					tiket.setClienteNickCliente(usuario);					tiket.setIdOcupadas(id);
 					tiketService.addTiket(tiket);
 					OcupadasButacasDTO.info("Las butaca ha sido ocupada exitosamente.");
 					return new AddUserResult(true, "Las butaca ha sido ocupada exitosamente.");

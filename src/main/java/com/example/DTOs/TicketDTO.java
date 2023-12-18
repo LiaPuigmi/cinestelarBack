@@ -25,7 +25,7 @@ public class TicketDTO {
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		private Integer tiketId;
-		private String clienteCorreoCliente;
+		private String clienteNickCliente;
 		@Column(insertable = false, updatable = false)
 		private Integer idOcupadas;
 		

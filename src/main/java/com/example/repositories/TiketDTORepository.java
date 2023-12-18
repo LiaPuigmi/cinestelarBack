@@ -10,5 +10,5 @@ import com.example.DTOs.TicketDTO;
 
 @Repository
 public interface TiketDTORepository extends JpaRepository<TicketDTO,Integer>{
-	List<TicketDTO> findByClienteCorreoCliente(String clienteCorreoCliente);
+	List<TicketDTO> findByClienteNickCliente(String clienteNickCliente);
 }

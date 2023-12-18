@@ -20,7 +20,7 @@ public class Tiket {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer tiketId;
-	private String clienteCorreoCliente;
+	private String clienteNickCliente;
 	private Integer idOcupadas;
 	
 	public static void info(String message) {

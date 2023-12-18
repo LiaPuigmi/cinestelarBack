@@ -23,8 +23,8 @@ public class TiketService {
 		return tiketDTORepository.findAll();
 	}
 	
-	public List<TicketDTO> findTiketById(String clienteCorreoCliente){
-		List<TicketDTO> tiket=tiketDTORepository.findByClienteCorreoCliente(clienteCorreoCliente);
+	public List<TicketDTO> findTiketById(String clienteNickCliente){
+		List<TicketDTO> tiket=tiketDTORepository.findByClienteNickCliente(clienteNickCliente);
 		return tiket;
 	}
 	

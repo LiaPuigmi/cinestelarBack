@@ -32,10 +32,10 @@ public class TiketsController {
 		return tiketService.findAllTikets();
 	}
 
-	@GetMapping(value = "/{clienteCorreoCliente}")
-	public List<TicketDTO> getTikets(@PathVariable String clienteCorreoCliente) {
+	@GetMapping(value = "/{clienteNickCliente}")
+	public List<TicketDTO> getTikets(@PathVariable String clienteNickCliente) {
 		TicketDTO.info("Request a http://localhost:PORT/tikets/id(GET)");
-		return tiketService.findTiketById(clienteCorreoCliente);
+		return tiketService.findTiketById(clienteNickCliente);
 	}
 
 	@PutMapping
